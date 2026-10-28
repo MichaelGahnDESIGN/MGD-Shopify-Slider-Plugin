@@ -1,0 +1,4 @@
+# MGD Slider - Theme App Extension (Pre-Alpha 0.1.0), UNGETESTET gegen echten Store
+# uid trägt die Shopify CLI beim ersten "shopify app deploy" selbst ein
+name = "MGD Slider"
+type = "theme"

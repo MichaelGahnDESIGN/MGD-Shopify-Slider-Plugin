@@ -1,0 +1,19 @@
+# MGD Slider - shopify.app.toml Vorlage (Pre-Alpha 0.1.0)
+# Nur Platzhalter, KEINE echten Werte. client_id kommt aus dem Partner Dashboard / "shopify app config link".
+# Nicht committen, wenn echte Werte drin stehen.
+
+client_id = ""
+name = "MGD Slider"
+application_url = ""
+embedded = true
+
+[access_scopes]
+# Theme App Extension allein braucht keine Scopes
+scopes = ""
+
+[auth]
+redirect_urls = []
+
+[webhooks]
+# api_version vor dem Einsatz prüfen
+api_version = "2026-07"

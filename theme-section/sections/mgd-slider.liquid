@@ -1,0 +1,326 @@
+{% comment %}
+  MGD Slider - Section fürs Online Store 2.0 Theme (Pre-Alpha 0.1.0)
+  UNGETESTET gegen echten Store, nur Gerüst. Statisch geprüft, mehr nicht.
+
+  Markup > snippets/mgd-slider-markup.liquid (gleicher Vertrag wie core/php/Renderer.php)
+  Assets  > mgd-slider.css / mgd-slider-model.js / mgd-slider.js (Kern) + mgd-slider-shuffle.js
+
+  Zufall: Liquid hat keinen Zufall-Filter. Darum liefert der Server eine feste Auswahl
+  (erste Produkte der Kollektion, Pool ca. 2x Anzahl) und mgd-slider-shuffle.js mischt
+  im Browser mit MGDSliderModel.shuffle. Ohne JS: erste Slide sichtbar, Rest versteckt.
+  Meistverkauft / Kategorie: Sortierung kann Liquid nicht erzwingen > Kollektion nach
+  Bestseller sortieren (Soritierung im Admin einstellen).
+
+  Limit (5 Slider kostenlos): Prüfung kommt später über die App, hier nix begrenzt.
+{% endcomment %}
+
+{{ 'mgd-slider.css' | asset_url | stylesheet_tag }}
+
+{% render 'mgd-slider-markup', cfg: section.settings, blocks: section.blocks, uid: section.id %}
+
+{% comment %} Reihenfolge wichtig: Model > Shuffle > Engine (alle defer) {% endcomment %}
+<script src="{{ 'mgd-slider-model.js' | asset_url }}" defer></script>
+<script src="{{ 'mgd-slider-shuffle.js' | asset_url }}" defer></script>
+<script src="{{ 'mgd-slider.js' | asset_url }}" defer></script>
+
+{% schema %}
+{
+  "name": "t:sections.mgd-slider.name",
+  "tag": "div",
+  "class": "mgd-slider-section",
+  "max_blocks": 30,
+  "settings": [
+    {
+      "type": "select",
+      "id": "mode",
+      "label": "t:sections.mgd-slider.settings.mode.label",
+      "default": "classic",
+      "options": [
+        {
+          "value": "classic",
+          "label": "t:sections.mgd-slider.settings.mode.options.classic"
+        },
+        {
+          "value": "prime",
+          "label": "t:sections.mgd-slider.settings.mode.options.prime"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "label",
+      "label": "t:sections.mgd-slider.settings.label.label",
+      "info": "t:sections.mgd-slider.settings.label.info"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.mgd-slider.settings.header_prime.content"
+    },
+    {
+      "type": "select",
+      "id": "source",
+      "label": "t:sections.mgd-slider.settings.source.label",
+      "default": "random",
+      "options": [
+        {
+          "value": "random",
+          "label": "t:sections.mgd-slider.settings.source.options.random"
+        },
+        {
+          "value": "bestseller",
+          "label": "t:sections.mgd-slider.settings.source.options.bestseller"
+        },
+        {
+          "value": "category",
+          "label": "t:sections.mgd-slider.settings.source.options.category"
+        },
+        {
+          "value": "manual",
+          "label": "t:sections.mgd-slider.settings.source.options.manual"
+        }
+      ],
+      "info": "t:sections.mgd-slider.settings.source.info"
+    },
+    {
+      "type": "range",
+      "id": "count",
+      "label": "t:sections.mgd-slider.settings.count.label",
+      "min": 1,
+      "max": 12,
+      "step": 1,
+      "default": 5
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "t:sections.mgd-slider.settings.collection.label",
+      "info": "t:sections.mgd-slider.settings.collection.info"
+    },
+    {
+      "type": "product_list",
+      "id": "products",
+      "label": "t:sections.mgd-slider.settings.products.label",
+      "limit": 50,
+      "info": "t:sections.mgd-slider.settings.products.info"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "t:sections.mgd-slider.settings.button_label.label",
+      "info": "t:sections.mgd-slider.settings.button_label.info"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.mgd-slider.settings.header_play.content"
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "t:sections.mgd-slider.settings.autoplay.label",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "interval",
+      "label": "t:sections.mgd-slider.settings.interval.label",
+      "min": 2000,
+      "max": 20000,
+      "step": 500,
+      "unit": "ms",
+      "default": 5000
+    },
+    {
+      "type": "range",
+      "id": "speed",
+      "label": "t:sections.mgd-slider.settings.speed.label",
+      "min": 0,
+      "max": 2000,
+      "step": 100,
+      "unit": "ms",
+      "default": 400
+    },
+    {
+      "type": "checkbox",
+      "id": "pause_on_hover",
+      "label": "t:sections.mgd-slider.settings.pause_on_hover.label",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "loop",
+      "label": "t:sections.mgd-slider.settings.loop.label",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "t:sections.mgd-slider.settings.header_nav.content"
+    },
+    {
+      "type": "checkbox",
+      "id": "arrows",
+      "label": "t:sections.mgd-slider.settings.arrows.label",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "dots",
+      "label": "t:sections.mgd-slider.settings.dots.label",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "swipe",
+      "label": "t:sections.mgd-slider.settings.swipe.label",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "t:sections.mgd-slider.settings.header_look.content"
+    },
+    {
+      "type": "select",
+      "id": "aspect",
+      "label": "t:sections.mgd-slider.settings.aspect.label",
+      "default": "16/9",
+      "options": [
+        {
+          "value": "21/9",
+          "label": "t:sections.mgd-slider.settings.aspect.options.21_9"
+        },
+        {
+          "value": "16/9",
+          "label": "t:sections.mgd-slider.settings.aspect.options.16_9"
+        },
+        {
+          "value": "3/2",
+          "label": "t:sections.mgd-slider.settings.aspect.options.3_2"
+        },
+        {
+          "value": "4/3",
+          "label": "t:sections.mgd-slider.settings.aspect.options.4_3"
+        },
+        {
+          "value": "1/1",
+          "label": "t:sections.mgd-slider.settings.aspect.options.1_1"
+        },
+        {
+          "value": "3/1",
+          "label": "t:sections.mgd-slider.settings.aspect.options.3_1"
+        }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "height_px",
+      "label": "t:sections.mgd-slider.settings.height_px.label",
+      "min": 0,
+      "max": 1200,
+      "step": 50,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "select",
+      "id": "fit",
+      "label": "t:sections.mgd-slider.settings.fit.label",
+      "default": "cover",
+      "options": [
+        {
+          "value": "cover",
+          "label": "t:sections.mgd-slider.settings.fit.options.cover"
+        },
+        {
+          "value": "contain",
+          "label": "t:sections.mgd-slider.settings.fit.options.contain"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "align",
+      "label": "t:sections.mgd-slider.settings.align.label",
+      "default": "left",
+      "options": [
+        {
+          "value": "left",
+          "label": "t:sections.mgd-slider.settings.align.options.left"
+        },
+        {
+          "value": "center",
+          "label": "t:sections.mgd-slider.settings.align.options.center"
+        },
+        {
+          "value": "right",
+          "label": "t:sections.mgd-slider.settings.align.options.right"
+        }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "accent",
+      "label": "t:sections.mgd-slider.settings.accent.label",
+      "info": "t:sections.mgd-slider.settings.accent.info"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.mgd-slider.settings.header_limit.content"
+    },
+    {
+      "type": "paragraph",
+      "content": "t:sections.mgd-slider.settings.limit_note.content"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "t:sections.mgd-slider.blocks.slide.name",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "t:sections.mgd-slider.blocks.slide.settings.image.label"
+        },
+        {
+          "type": "text",
+          "id": "alt",
+          "label": "t:sections.mgd-slider.blocks.slide.settings.alt.label",
+          "info": "t:sections.mgd-slider.blocks.slide.settings.alt.info"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "t:sections.mgd-slider.blocks.slide.settings.title.label"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "t:sections.mgd-slider.blocks.slide.settings.text.label"
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "t:sections.mgd-slider.blocks.slide.settings.button_label.label"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "t:sections.mgd-slider.blocks.slide.settings.button_link.label"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.mgd-slider.presets.name",
+      "blocks": [
+        {
+          "type": "slide"
+        },
+        {
+          "type": "slide"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

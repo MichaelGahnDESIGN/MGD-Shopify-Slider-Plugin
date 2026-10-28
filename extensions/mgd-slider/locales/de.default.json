@@ -1,0 +1,259 @@
+{
+  "blocks": {
+    "mgd_slider": {
+      "settings": {
+        "mode": {
+          "label": "Modus",
+          "options": {
+            "classic": "Klassisch (eigene Slides)",
+            "prime": "Prime (Produkte)"
+          }
+        },
+        "label": {
+          "label": "Beschriftung für Screenreader",
+          "info": "Kurzer Name des Sliders, z. B. \"Angebote\". Wird nicht sichtbar angezeigt."
+        },
+        "header_prime": {
+          "content": "Prime (nur im Modus Prime)"
+        },
+        "source": {
+          "label": "Quelle",
+          "options": {
+            "random": "Zufall",
+            "bestseller": "Meistverkauft",
+            "category": "Kategorie",
+            "manual": "Manuell (Produkte wählen)"
+          },
+          "info": "Zufall: Die Reihenfolge wird im Browser gemischt (Liquid hat keinen Zufall). Ohne JavaScript erscheint das erste Produkt der Kollektion."
+        },
+        "count": {
+          "label": "Anzahl Produkte"
+        },
+        "collection": {
+          "label": "Kollektion",
+          "info": "Für Kategorie und Meistverkauft: eine Kollektion wählen, die nach Bestseller sortiert ist (Sortierung in der Kollektion einstellen). Der Slider kann die Sortierung nicht selbst erzwingen. Bei Zufall ohne Auswahl: alle Produkte."
+        },
+        "products": {
+          "label": "Produkte (manuell)",
+          "info": "Nur bei Quelle \"Manuell\". Maximal 50."
+        },
+        "button_label": {
+          "label": "Button-Text",
+          "info": "Leer = Standardtext \"Ansehen\"."
+        },
+        "header_play": {
+          "content": "Wechsel"
+        },
+        "autoplay": {
+          "label": "Automatisch wechseln"
+        },
+        "interval": {
+          "label": "Intervall"
+        },
+        "speed": {
+          "label": "Geschwindigkeit der Animation"
+        },
+        "pause_on_hover": {
+          "label": "Pause bei Hover"
+        },
+        "loop": {
+          "label": "Endlos-Schleife"
+        },
+        "header_nav": {
+          "content": "Bedienung"
+        },
+        "arrows": {
+          "label": "Pfeile"
+        },
+        "dots": {
+          "label": "Punkte"
+        },
+        "swipe": {
+          "label": "Wischen"
+        },
+        "header_look": {
+          "content": "Aussehen"
+        },
+        "aspect": {
+          "label": "Seitenverhältnis",
+          "options": {
+            "21_9": "21:9",
+            "16_9": "16:9",
+            "3_2": "3:2",
+            "4_3": "4:3",
+            "1_1": "1:1",
+            "3_1": "3:1"
+          }
+        },
+        "height_px": {
+          "label": "Feste Höhe (0 = Seitenverhältnis)"
+        },
+        "fit": {
+          "label": "Bild-Zuschnitt",
+          "options": {
+            "cover": "Füllen (zuschneiden)",
+            "contain": "Einpassen"
+          }
+        },
+        "align": {
+          "label": "Text-Ausrichtung",
+          "options": {
+            "left": "Links",
+            "center": "Mitte",
+            "right": "Rechts"
+          }
+        },
+        "accent": {
+          "label": "Akzentfarbe",
+          "info": "Leer = Farbe aus dem Theme."
+        },
+        "header_limit": {
+          "content": "Limit"
+        },
+        "limit_note": {
+          "content": "Kostenlose Version: bis zu 5 Slider. Die Prüfung läuft später über die App, hier im Gerüst wird nichts begrenzt."
+        },
+        "header_slide_1": {
+          "content": "Slide 1 (klassisch)"
+        },
+        "slide_1_image": {
+          "label": "Bild"
+        },
+        "slide_1_alt": {
+          "label": "Alt-Text",
+          "info": "Bildbeschreibung für Screenreader. Leer = Alt-Text aus der Mediathek."
+        },
+        "slide_1_title": {
+          "label": "Titel"
+        },
+        "slide_1_text": {
+          "label": "Text"
+        },
+        "slide_1_button_label": {
+          "label": "Button-Text"
+        },
+        "slide_1_button_link": {
+          "label": "Button-Link"
+        },
+        "header_slide_2": {
+          "content": "Slide 2 (klassisch)"
+        },
+        "slide_2_image": {
+          "label": "Bild"
+        },
+        "slide_2_alt": {
+          "label": "Alt-Text",
+          "info": "Bildbeschreibung für Screenreader. Leer = Alt-Text aus der Mediathek."
+        },
+        "slide_2_title": {
+          "label": "Titel"
+        },
+        "slide_2_text": {
+          "label": "Text"
+        },
+        "slide_2_button_label": {
+          "label": "Button-Text"
+        },
+        "slide_2_button_link": {
+          "label": "Button-Link"
+        },
+        "header_slide_3": {
+          "content": "Slide 3 (klassisch)"
+        },
+        "slide_3_image": {
+          "label": "Bild"
+        },
+        "slide_3_alt": {
+          "label": "Alt-Text",
+          "info": "Bildbeschreibung für Screenreader. Leer = Alt-Text aus der Mediathek."
+        },
+        "slide_3_title": {
+          "label": "Titel"
+        },
+        "slide_3_text": {
+          "label": "Text"
+        },
+        "slide_3_button_label": {
+          "label": "Button-Text"
+        },
+        "slide_3_button_link": {
+          "label": "Button-Link"
+        },
+        "header_slide_4": {
+          "content": "Slide 4 (klassisch)"
+        },
+        "slide_4_image": {
+          "label": "Bild"
+        },
+        "slide_4_alt": {
+          "label": "Alt-Text",
+          "info": "Bildbeschreibung für Screenreader. Leer = Alt-Text aus der Mediathek."
+        },
+        "slide_4_title": {
+          "label": "Titel"
+        },
+        "slide_4_text": {
+          "label": "Text"
+        },
+        "slide_4_button_label": {
+          "label": "Button-Text"
+        },
+        "slide_4_button_link": {
+          "label": "Button-Link"
+        },
+        "header_slide_5": {
+          "content": "Slide 5 (klassisch)"
+        },
+        "slide_5_image": {
+          "label": "Bild"
+        },
+        "slide_5_alt": {
+          "label": "Alt-Text",
+          "info": "Bildbeschreibung für Screenreader. Leer = Alt-Text aus der Mediathek."
+        },
+        "slide_5_title": {
+          "label": "Titel"
+        },
+        "slide_5_text": {
+          "label": "Text"
+        },
+        "slide_5_button_label": {
+          "label": "Button-Text"
+        },
+        "slide_5_button_link": {
+          "label": "Button-Link"
+        },
+        "header_slide_6": {
+          "content": "Slide 6 (klassisch)"
+        },
+        "slide_6_image": {
+          "label": "Bild"
+        },
+        "slide_6_alt": {
+          "label": "Alt-Text",
+          "info": "Bildbeschreibung für Screenreader. Leer = Alt-Text aus der Mediathek."
+        },
+        "slide_6_title": {
+          "label": "Titel"
+        },
+        "slide_6_text": {
+          "label": "Text"
+        },
+        "slide_6_button_label": {
+          "label": "Button-Text"
+        },
+        "slide_6_button_link": {
+          "label": "Button-Link"
+        }
+      },
+      "name": "MGD Slider"
+    }
+  },
+  "mgd_slider": {
+    "label_default": "Slider",
+    "slide_label": "{{ n }} von {{ total }}",
+    "button_default": "Ansehen",
+    "empty": "MGD Slider: Noch keine Slides. Slides hinzufügen oder Bilder auswählen.",
+    "empty_prime": "MGD Slider: Keine passenden Produkte gefunden. Kollektion bzw. Produkte wählen (Produkte brauchen Bild und müssen verfügbar sein)."
+  }
+}

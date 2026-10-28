@@ -1,0 +1,100 @@
+{% comment %}
+  MGD Slider Markup - section.mgd-slider > viewport > track > slides (Vertrag wie core/php/Renderer.php)
+  Params: cfg (section.settings bzw. block.settings), blocks (nur Section), uid
+  UNGETESTET gegen echten Store.
+{% endcomment %}
+{%- assign mode = cfg.mode | default: 'classic' -%}
+{%- assign source = cfg.source | default: 'random' -%}
+{%- assign want = cfg.count | default: 5 | at_least: 1 | at_most: 12 -%}
+
+{% comment %} Texte mit Fallback {% endcomment %}
+{%- assign aria = cfg.label -%}
+{%- if aria == blank -%}{%- assign aria = 'mgd_slider.label_default' | t -%}{%- endif -%}
+{%- assign btn = cfg.button_label -%}
+{%- if btn == blank -%}{%- assign btn = 'mgd_slider.button_default' | t -%}{%- endif -%}
+
+{% comment %} Zufall = Pool grösser, Browser mischt und kürzt auf Anzahl {% endcomment %}
+{%- assign shuffle = false -%}
+{%- assign pool = want -%}
+{%- if mode == 'prime' and source == 'random' -%}
+  {%- assign shuffle = true -%}
+  {%- assign pool = want | times: 2 | at_most: 24 -%}
+{%- endif -%}
+
+{%- assign shown = 0 -%}
+{%- capture slides -%}
+  {%- if mode == 'prime' -%}
+    {%- assign has_list = false -%}
+    {%- assign coll = cfg.collection -%}
+    {%- if coll == blank and source != 'category' and source != 'manual' -%}
+      {%- assign coll = collections['all'] -%}
+    {%- endif -%}
+    {%- if source == 'manual' -%}
+      {%- if cfg.products != blank -%}
+        {%- assign list = cfg.products -%}
+        {%- assign has_list = true -%}
+      {%- endif -%}
+    {%- elsif coll != blank -%}
+      {%- assign list = coll.products -%}
+      {%- assign has_list = true -%}
+    {%- endif -%}
+    {%- if has_list -%}
+      {%- for product in list limit: 50 -%}
+        {%- if shown >= pool -%}{%- break -%}{%- endif -%}
+        {%- if product.featured_image != blank and product.available -%}
+          {%- assign shown = shown | plus: 1 -%}
+          {%- assign price_text = product.price | money -%}
+          {%- render 'mgd-slider-slide', image: product.featured_image, alt: product.featured_image.alt, title: product.title, text: price_text, label: btn, url: product.url, n: shown -%}
+        {%- endif -%}
+      {%- endfor -%}
+    {%- endif -%}
+  {%- elsif blocks != blank -%}
+    {% comment %} klassisch in der Section: Blocks {% endcomment %}
+    {%- for block in blocks -%}
+      {%- assign has_content = false -%}
+      {%- if block.settings.image != blank or block.settings.title != blank -%}{%- assign has_content = true -%}{%- endif -%}
+      {%- if block.type == 'slide' and has_content -%}
+        {%- assign shown = shown | plus: 1 -%}
+        {%- render 'mgd-slider-slide', image: block.settings.image, alt: block.settings.alt, title: block.settings.title, text: block.settings.text, label: block.settings.button_label, url: block.settings.button_link, n: shown, attrs: block.shopify_attributes -%}
+      {%- endif -%}
+    {%- endfor -%}
+  {%- else -%}
+    {% comment %} klassisch im App-Block: feste Gruppen slide_1_* bis slide_6_* {% endcomment %}
+    {%- for i in (1..6) -%}
+      {%- assign k_image = 'slide_' | append: i | append: '_image' -%}
+      {%- assign k_alt = 'slide_' | append: i | append: '_alt' -%}
+      {%- assign k_title = 'slide_' | append: i | append: '_title' -%}
+      {%- assign k_text = 'slide_' | append: i | append: '_text' -%}
+      {%- assign k_label = 'slide_' | append: i | append: '_button_label' -%}
+      {%- assign k_link = 'slide_' | append: i | append: '_button_link' -%}
+      {%- assign s_image = cfg[k_image] -%}
+      {%- assign s_title = cfg[k_title] -%}
+      {%- if s_image != blank or s_title != blank -%}
+        {%- assign shown = shown | plus: 1 -%}
+        {%- render 'mgd-slider-slide', image: s_image, alt: cfg[k_alt], title: s_title, text: cfg[k_text], label: cfg[k_label], url: cfg[k_link], n: shown -%}
+      {%- endif -%}
+    {%- endfor -%}
+  {%- endif -%}
+{%- endcapture -%}
+
+{%- assign total = shown -%}
+{%- if shuffle -%}{%- assign total = shown | at_most: want -%}{%- endif -%}
+
+{% comment %} CSS-Variablen: Seitenverhältnis, feste Höhe, Akzent {% endcomment %}
+{%- capture style -%}
+  --mgd-aspect:{{ cfg.aspect | default: '16/9' }};
+  {%- if cfg.height_px > 0 -%}--mgd-height:{{ cfg.height_px | round }}px;{%- endif -%}
+  {%- if cfg.accent != blank -%}--mgd-accent:{{ cfg.accent }};{%- endif -%}
+{%- endcapture -%}
+
+{%- if shown > 0 -%}
+  <section id="mgd-slider-{{ uid | handleize }}" class="mgd-slider mgd-slider--{{ mode }} mgd-align-{{ cfg.align | default: 'left' }} mgd-fit-{{ cfg.fit | default: 'cover' }}" data-mgd-slider='{"autoplay":{{ cfg.autoplay | default: false }},"interval":{{ cfg.interval | default: 5000 }},"speed":{{ cfg.speed | default: 400 }},"pauseOnHover":{{ cfg.pause_on_hover | default: true, allow_false: true }},"arrows":{{ cfg.arrows | default: true, allow_false: true }},"dots":{{ cfg.dots | default: true, allow_false: true }},"swipe":{{ cfg.swipe | default: true, allow_false: true }},"loop":{{ cfg.loop | default: true, allow_false: true }}}' aria-roledescription="carousel" aria-label="{{ aria | escape }}" style="{{ style | strip | escape }}"
+    {%- if shuffle %} data-mgd-shuffle="{{ want }}" data-mgd-label="{{ 'mgd_slider.slide_label' | t: n: '[[n]]', total: '[[t]]' | escape }}"{% endif -%}
+  >
+    <div class="mgd-slider__viewport"><div class="mgd-slider__track">{{ slides | replace: '[[t]]', total }}</div></div>
+  </section>
+{%- elsif request.design_mode -%}
+  <div class="mgd-slider-empty" style="padding:1rem;border:1px dashed currentColor">
+    {%- if mode == 'prime' -%}{{ 'mgd_slider.empty_prime' | t }}{%- else -%}{{ 'mgd_slider.empty' | t }}{%- endif -%}
+  </div>
+{%- endif -%}

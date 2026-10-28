@@ -1,0 +1,9 @@
+{
+  "mgd_slider": {
+    "label_default": "Slider",
+    "slide_label": "{{ n }} von {{ total }}",
+    "button_default": "Ansehen",
+    "empty": "MGD Slider: Noch keine Slides. Slides hinzufügen oder Bilder auswählen.",
+    "empty_prime": "MGD Slider: Keine passenden Produkte gefunden. Kollektion bzw. Produkte wählen (Produkte brauchen Bild und müssen verfügbar sein)."
+  }
+}

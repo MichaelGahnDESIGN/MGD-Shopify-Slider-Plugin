@@ -1,0 +1,149 @@
+{
+  "sections": {
+    "mgd-slider": {
+      "settings": {
+        "mode": {
+          "label": "Mode",
+          "options": {
+            "classic": "Classic (own slides)",
+            "prime": "Prime (products)"
+          }
+        },
+        "label": {
+          "label": "Label for screen readers",
+          "info": "Short name of the slider, e.g. \"Offers\". Not shown visually."
+        },
+        "header_prime": {
+          "content": "Prime (only in Prime mode)"
+        },
+        "source": {
+          "label": "Source",
+          "options": {
+            "random": "Random",
+            "bestseller": "Best selling",
+            "category": "Category",
+            "manual": "Manual (pick products)"
+          },
+          "info": "Random: the order is shuffled in the browser (Liquid has no random). Without JavaScript the first product of the collection is shown."
+        },
+        "count": {
+          "label": "Number of products"
+        },
+        "collection": {
+          "label": "Collection",
+          "info": "For Category and Best selling: pick a collection that is sorted by best selling (set the sort order in the collection). The slider cannot force the sorting itself. For Random without a choice: all products."
+        },
+        "products": {
+          "label": "Products (manual)",
+          "info": "Only for source \"Manual\". Maximum 50."
+        },
+        "button_label": {
+          "label": "Button label",
+          "info": "Empty = default text."
+        },
+        "header_play": {
+          "content": "Playback"
+        },
+        "autoplay": {
+          "label": "Autoplay"
+        },
+        "interval": {
+          "label": "Interval"
+        },
+        "speed": {
+          "label": "Animation speed"
+        },
+        "pause_on_hover": {
+          "label": "Pause on hover"
+        },
+        "loop": {
+          "label": "Loop"
+        },
+        "header_nav": {
+          "content": "Controls"
+        },
+        "arrows": {
+          "label": "Arrows"
+        },
+        "dots": {
+          "label": "Dots"
+        },
+        "swipe": {
+          "label": "Swipe"
+        },
+        "header_look": {
+          "content": "Look"
+        },
+        "aspect": {
+          "label": "Aspect ratio",
+          "options": {
+            "21_9": "21:9",
+            "16_9": "16:9",
+            "3_2": "3:2",
+            "4_3": "4:3",
+            "1_1": "1:1",
+            "3_1": "3:1"
+          }
+        },
+        "height_px": {
+          "label": "Fixed height (0 = use aspect ratio)"
+        },
+        "fit": {
+          "label": "Image fit",
+          "options": {
+            "cover": "Cover (crop)",
+            "contain": "Contain"
+          }
+        },
+        "align": {
+          "label": "Text alignment",
+          "options": {
+            "left": "Left",
+            "center": "Center",
+            "right": "Right"
+          }
+        },
+        "accent": {
+          "label": "Accent color",
+          "info": "Empty = color from the theme."
+        },
+        "header_limit": {
+          "content": "Limit"
+        },
+        "limit_note": {
+          "content": "Free version: up to 5 sliders. The check will run later through the app, nothing is limited in this scaffold."
+        }
+      },
+      "name": "MGD Slider",
+      "blocks": {
+        "slide": {
+          "name": "Slide",
+          "settings": {
+            "image": {
+              "label": "Image"
+            },
+            "alt": {
+              "label": "Alt text",
+              "info": "Image description for screen readers. Empty = alt text from the media library."
+            },
+            "title": {
+              "label": "Title"
+            },
+            "text": {
+              "label": "Text"
+            },
+            "button_label": {
+              "label": "Button label"
+            },
+            "button_link": {
+              "label": "Button link"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "MGD Slider"
+      }
+    }
+  }
+}

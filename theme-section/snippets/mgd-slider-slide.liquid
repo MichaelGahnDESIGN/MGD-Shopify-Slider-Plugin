@@ -1,0 +1,21 @@
+{% comment %}
+  Eine Slide, Markup wie Renderer::slide()
+  Params: image (Bild-Objekt), alt, title, text, label, url, n (Nummer), attrs (shopify_attributes)
+{% endcomment %}
+{%- assign alt_text = alt | default: image.alt | default: '' -%}
+<div class="mgd-slide" role="group" aria-roledescription="slide" aria-label="{{ 'mgd_slider.slide_label' | t: n: n, total: '[[t]]' | escape }}"{% if attrs != blank %} {{ attrs }}{% endif %}>
+  {%- if image != blank -%}
+    {%- if n == 1 -%}
+      {{- image | image_url: width: 1600 | image_tag: widths: '480, 768, 1100, 1600, 2200', sizes: '100vw', class: 'mgd-slide__img', alt: alt_text, decoding: 'async', loading: 'eager', fetchpriority: 'high' -}}
+    {%- else -%}
+      {{- image | image_url: width: 1600 | image_tag: widths: '480, 768, 1100, 1600, 2200', sizes: '100vw', class: 'mgd-slide__img', alt: alt_text, decoding: 'async', loading: 'lazy' -}}
+    {%- endif -%}
+  {%- endif -%}
+  {%- if title != blank or text != blank or label != blank -%}
+    <div class="mgd-slide__overlay">
+      {%- if title != blank -%}<p class="mgd-slide__title">{{ title | escape }}</p>{%- endif -%}
+      {%- if text != blank -%}<p class="mgd-slide__text">{{ text | escape }}</p>{%- endif -%}
+      {%- if label != blank and url != blank -%}<a class="mgd-slide__btn" href="{{ url | escape }}">{{ label | escape }}</a>{%- endif -%}
+    </div>
+  {%- endif -%}
+</div>
