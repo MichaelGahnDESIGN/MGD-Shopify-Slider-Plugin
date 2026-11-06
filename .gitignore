@@ -8,3 +8,6 @@ vendor/
 *.sha256
 .idea/
 .vscode/
+shopify.app.toml
+shopify.app.*.toml
+.shopify/

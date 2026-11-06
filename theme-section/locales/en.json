@@ -4,6 +4,11 @@
     "slide_label": "{{ n }} of {{ total }}",
     "button_default": "View",
     "empty": "MGD Slider: No slides yet. Add slides or pick images.",
-    "empty_prime": "MGD Slider: No matching products found. Pick a collection or products (products need an image and must be available)."
+    "empty_prime": "MGD Slider: No matching products found. Pick a collection or products (products need an image and must be available).",
+    "prev": "Previous slide",
+    "next": "Next slide",
+    "dot": "Show slide {{ n }}",
+    "pause": "Pause automatic rotation",
+    "play": "Start automatic rotation"
   }
 }

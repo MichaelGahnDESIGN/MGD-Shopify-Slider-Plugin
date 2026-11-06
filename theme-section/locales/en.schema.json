@@ -111,7 +111,7 @@
           "content": "Limit"
         },
         "limit_note": {
-          "content": "Free version: up to 5 sliders. The check will run later through the app, nothing is limited in this scaffold."
+          "content": "Note: The limit of 5 sliders in the free version is NOT enforced in this version. That needs an app backend (see README)."
         }
       },
       "name": "MGD Slider",

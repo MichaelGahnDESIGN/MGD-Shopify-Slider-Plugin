@@ -1,19 +1,22 @@
-# MGD Slider - shopify.app.toml Vorlage (Pre-Alpha 0.1.0)
-# Nur Platzhalter, KEINE echten Werte. client_id kommt aus dem Partner Dashboard / "shopify app config link".
-# Nicht committen, wenn echte Werte drin stehen.
+# MGD Slider - shopify.app.toml Vorlage (0.2.0 Pre-Alpha)
+# Nur Platzhalter, KEINE echten Werte, keine Secrets.
+# Benutzen: Datei kopieren > "shopify.app.toml" (Ordner app/ oder Repo-Wurzel, siehe README),
+# dann "shopify app config link" ausführen. Das trägt client_id selbst ein.
+# shopify.app.toml mit echter client_id NICHT committen.
 
+# client_id kommt aus dem Partner Dashboard (leer lassen, "config link" füllt es)
 client_id = ""
 name = "MGD Slider"
-application_url = ""
-embedded = true
+# Theme App Extension braucht kein Backend > Platzhalter-URL, später durch echte ersetzen
+application_url = "https://example.com"
+embedded = false
 
 [access_scopes]
-# Theme App Extension allein braucht keine Scopes
+# Block liest Produkte direkt per Liquid > keine Scopes nötig
 scopes = ""
 
 [auth]
-redirect_urls = []
+redirect_urls = [ "https://example.com/api/auth" ]
 
 [webhooks]
-# api_version vor dem Einsatz prüfen
-api_version = "2026-07"
+api_version = "2026-10"

@@ -1,11 +1,11 @@
 {% comment %}
-  MGD Slider - App-Block (Theme App Extension), Pre-Alpha 0.1.0
-  UNGETESTET gegen echten Store, nur Gerüst.
+  MGD Slider - App Block (Theme App Extension) 0.2.0 Pre-Alpha
+  Noch in keinem echten Store gelaufen, nur statisch geprüft.
 
-  Gleiches Markup wie die Theme-Section (snippets/mgd-slider-markup.liquid).
-  App-Blocks haben keine Unter-Blocks > klassische Slides als 6 feste Gruppen.
-  Zufall: wie in der Section, Mischen im Browser (mgd-slider-shuffle.js).
-  Limit / Pro-Prüfung: später über die App, hier nix begrenzt.
+  Markup > snippets/mgd-slider-markup.liquid (gleich wie Theme-Section)
+  Klassisch: 6 feste Slide-Gruppen (App Block hat keine Unter-Blocks) > mehr Slides = 2. Block
+  Prime: Slides aus Produkten, Zufall wird im Browser gemischt (mgd-slider-shuffle.js)
+  Limit 5 Slider (Free): hier NICHT erzwingbar, siehe README
 {% endcomment %}
 
 {{ 'mgd-slider.css' | asset_url | stylesheet_tag }}
@@ -20,7 +20,7 @@
 {% schema %}
 {
   "name": "t:blocks.mgd_slider.name",
-  "target": "section",
+  "target": "content",
   "settings": [
     {
       "type": "select",

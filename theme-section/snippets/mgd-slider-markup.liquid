@@ -80,6 +80,7 @@
 {%- assign total = shown -%}
 {%- if shuffle -%}{%- assign total = shown | at_most: want -%}{%- endif -%}
 
+{% comment %} Labels fürs JS aus den Locales (de/en) {% endcomment %}
 {% comment %} CSS-Variablen: Seitenverhältnis, feste Höhe, Akzent {% endcomment %}
 {%- capture style -%}
   --mgd-aspect:{{ cfg.aspect | default: '16/9' }};
@@ -88,7 +89,7 @@
 {%- endcapture -%}
 
 {%- if shown > 0 -%}
-  <section id="mgd-slider-{{ uid | handleize }}" class="mgd-slider mgd-slider--{{ mode }} mgd-align-{{ cfg.align | default: 'left' }} mgd-fit-{{ cfg.fit | default: 'cover' }}" data-mgd-slider='{"autoplay":{{ cfg.autoplay | default: false }},"interval":{{ cfg.interval | default: 5000 }},"speed":{{ cfg.speed | default: 400 }},"pauseOnHover":{{ cfg.pause_on_hover | default: true, allow_false: true }},"arrows":{{ cfg.arrows | default: true, allow_false: true }},"dots":{{ cfg.dots | default: true, allow_false: true }},"swipe":{{ cfg.swipe | default: true, allow_false: true }},"loop":{{ cfg.loop | default: true, allow_false: true }}}' aria-roledescription="carousel" aria-label="{{ aria | escape }}" style="{{ style | strip | escape }}"
+  <section id="mgd-slider-{{ uid | handleize }}" class="mgd-slider mgd-slider--{{ mode }} mgd-align-{{ cfg.align | default: 'left' }} mgd-fit-{{ cfg.fit | default: 'cover' }}" data-mgd-slider='{"autoplay":{{ cfg.autoplay | default: false }},"interval":{{ cfg.interval | default: 5000 }},"speed":{{ cfg.speed | default: 400 }},"pauseOnHover":{{ cfg.pause_on_hover | default: true, allow_false: true }},"arrows":{{ cfg.arrows | default: true, allow_false: true }},"dots":{{ cfg.dots | default: true, allow_false: true }},"swipe":{{ cfg.swipe | default: true, allow_false: true }},"loop":{{ cfg.loop | default: true, allow_false: true }}}' data-mgd-l-prev="{{ 'mgd_slider.prev' | t | escape }}" data-mgd-l-next="{{ 'mgd_slider.next' | t | escape }}" data-mgd-l-dot="{{ 'mgd_slider.dot' | t: n: '[[n]]' | escape }}" data-mgd-l-pause="{{ 'mgd_slider.pause' | t | escape }}" data-mgd-l-play="{{ 'mgd_slider.play' | t | escape }}" aria-roledescription="carousel" aria-label="{{ aria | escape }}" style="{{ style | strip | escape }}"
     {%- if shuffle %} data-mgd-shuffle="{{ want }}" data-mgd-label="{{ 'mgd_slider.slide_label' | t: n: '[[n]]', total: '[[t]]' | escape }}"{% endif -%}
   >
     <div class="mgd-slider__viewport"><div class="mgd-slider__track">{{ slides | replace: '[[t]]', total }}</div></div>

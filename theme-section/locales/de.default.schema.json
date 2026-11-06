@@ -111,7 +111,7 @@
           "content": "Limit"
         },
         "limit_note": {
-          "content": "Kostenlose Version: bis zu 5 Slider. Die Prüfung läuft später über die App, hier im Gerüst wird nichts begrenzt."
+          "content": "Hinweis: Die Grenze von 5 Slidern in der Gratis-Version wird in dieser Version NICHT erzwungen. Das geht erst mit einem App-Backend (siehe README)."
         }
       },
       "name": "MGD Slider",
