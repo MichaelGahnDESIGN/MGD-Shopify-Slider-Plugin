@@ -1,4 +1,4 @@
-# MGD Slider - shopify.app.toml Vorlage (0.2.0 Pre-Alpha)
+# MGD Slider - shopify.app.toml Vorlage (0.2.1 Pre-Alpha)
 # Nur Platzhalter, KEINE echten Werte, keine Secrets.
 # Benutzen: Datei kopieren > "shopify.app.toml" (Ordner app/ oder Repo-Wurzel, siehe README),
 # dann "shopify app config link" ausführen. Das trägt client_id selbst ein.

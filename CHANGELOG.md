@@ -1,5 +1,11 @@
 # Änderungen
 
+## 0.2.1 (Pre-Alpha)
+
+- Erster GitHub-Release mit ZIP und Prüfsumme. Am Slider selbst hat sich nichts geändert.
+- Tests: `node --test test/` grün (5 von 5).
+- Weiter nicht geprüft: echter Store, `shopify app deploy`, `app config validate`. Dafür braucht es einen Shopify-Partner-Zugang und einen Test-Store.
+
 ## 0.2.0 (Pre-Alpha, kein Release)
 
 - Aus dem Gerüst wird eine App-Struktur: Theme App Extension `mgd-slider` mit Block (Ziel "content"), Snippets, Assets, Locales de/en.
