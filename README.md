@@ -1,6 +1,6 @@
 # MGD Slider für Shopify
 
-> Stand: 0.2.1 Pre-Alpha. Ein Gerüst. Das Ganze ist noch in KEINEM echten Shop gelaufen. Bitte noch nicht in einem Live-Shop benutzen.
+> Stand: 1.4.0 (frühes Gerüst). Ein Gerüst. Das Ganze ist noch in KEINEM echten Shop gelaufen. Bitte noch nicht in einem Live-Shop benutzen.
 
 Ein Slider (Bilder-Karussell) von Michael Gahn DESIGN, gebaut als **Shopify-App mit Theme App Extension**. Das heißt: Händler schalten die App ein und ziehen den Block "MGD Slider" im Theme-Editor auf eine Seite. Zwei Arten:
 

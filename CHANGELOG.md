@@ -1,5 +1,11 @@
 # Änderungen
 
+## 1.4.0
+
+- Neue Versionsnummer 1.4.0: Alle MGD-Produkte haben jetzt die gleiche Version. Das Gerüst ist trotzdem noch in keinem echten Store gelaufen.
+- Slider-Kern abgeglichen: Text auf dem Bild besser lesbar, auf dem Handy eine feste Höhe, Button-Höhe korrigiert.
+- Tests: `node --test test/` grün.
+
 ## 0.2.1 (Pre-Alpha)
 
 - Erster GitHub-Release mit ZIP und Prüfsumme. Am Slider selbst hat sich nichts geändert.
