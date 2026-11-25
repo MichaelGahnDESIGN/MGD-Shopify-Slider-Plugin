@@ -1,4 +1,4 @@
-/* MGD Slider Shopify-Glue 1.4.0 - Zufall im Browser (Liquid hat keinen), UNGETESTET gegen echten Store
+/* MGD Slider Shopify-Glue 2.1.1 - Zufall im Browser (Liquid hat keinen), UNGETESTET gegen echten Store
    Muss NACH mgd-slider-model.js und VOR mgd-slider.js laufen (alle defer, Reihenfolge im Markup) */
 (function () {
   'use strict';

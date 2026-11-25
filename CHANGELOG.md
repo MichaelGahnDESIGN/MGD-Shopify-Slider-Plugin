@@ -1,5 +1,9 @@
 # Änderungen
 
+## [2.1.1] - 2026-11-25
+
+- Einheitliche Version 2.1.1, kein Baukasten bei Shopify.
+
 ## 1.4.0
 
 - Neue Versionsnummer 1.4.0: Alle MGD-Produkte haben jetzt die gleiche Version. Das Gerüst ist trotzdem noch in keinem echten Store gelaufen.
